@@ -15,7 +15,7 @@ Key aspects of the final code:
 To deploy this application:
 
 ```bash
-modal deploy llama-chatbot.py
+modal deploy irish_llm_v2.py
 ```
 
 This command deploys both the vLLM server and FastHTML interface.
