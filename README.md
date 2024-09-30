@@ -1,7 +1,3 @@
-Here's the updated README with the suggested names:
-
----
-
 ### Base Model
 
 Using **UCCIX-Llama2-13B**, an Irish-English bilingual model based on **Llama 2-13B**. Capable of understanding both languages and outperforms larger models on Irish language tasks.
@@ -23,6 +19,9 @@ modal deploy llama-chatbot.py
 ```
 
 This command deploys both the vLLM server and FastHTML interface.
+
+![image](https://github.com/user-attachments/assets/d9201394-cf3d-424b-9f84-5d9d5caf69a7)
+
 
 ---
 
