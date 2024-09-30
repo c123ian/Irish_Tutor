@@ -27,7 +27,7 @@ This command deploys both the vLLM server and FastHTML interface.
 Please note, if you would like to use your own model from Huggingface Hub, make sure to save teh weights to a Modal volume (in my case I call it `/llamas`).
 
 ```bash
-modal run ownload_llama.py
+modal run download_llama.py
 ```
 
 
