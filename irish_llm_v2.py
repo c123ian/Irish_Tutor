@@ -11,7 +11,7 @@ from fastapi import Security, HTTPException, Depends
 # Constants for model directory, model name, and token for authentication
 MODELS_DIR = "/llamas"
 MODEL_NAME = "ReliableAI/UCCIX-Llama2-13B-Instruct"
-TOKEN = "as-2ptPOJfzhGVVEYMSyxYqty"  # Replace with a modal.Secret
+TOKEN = "XXXXXX"  # Replace with a modal.Secret
 
 # Uncomment for token check, ensure a valid token is set
 # Uncomment to check if the secret is set: 
