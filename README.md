@@ -19,10 +19,16 @@ To deploy this application:
 ```bash
 modal deploy irish_llm_v2.py
 ```
-
 This command deploys both the vLLM server and FastHTML interface.
 
 ![image](https://github.com/user-attachments/assets/d9201394-cf3d-424b-9f84-5d9d5caf69a7)
+
+
+Please note, if you would like to use your own model from Huggingface Hub, make sure to save teh weights to a Modal volume (in my case I call it `/llamas`).
+
+```bash
+modal run ownload_llama.py
+```
 
 
 ---
