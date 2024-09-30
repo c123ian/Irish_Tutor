@@ -6,7 +6,7 @@ Using **UCCIX-Llama2-13B**, an Irish-English bilingual model based on **Llama 2-
 
 Key aspects of the final code:
 
-1. **Modal app configuration**: Define a Modal app ("llama-chatbot") and set up the image with dependencies.
+1. **Modal app configuration**: Define a Modal app and set up the image with dependencies.
 2. **Volume setup**: Use a Modal volume to store model weights.
 3. **vLLM server**: GPU-based language model inference, implemented with Modal.
 4. **FastHTML interface**: Serve the web interface via FastHTML.
