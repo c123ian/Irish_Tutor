@@ -12,6 +12,8 @@ Key aspects of the final code:
 4. **FastHTML interface**: Serve the web interface via FastHTML.
 5. **Deployment**: Both vLLM server and FastHTML interface run as ASGI apps.
 
+Two versions of the chatbot emerged, but for either chatbot you can insert your own llm from huggingface :) 
+
 To deploy this application:
 
 ```bash
