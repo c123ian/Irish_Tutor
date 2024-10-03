@@ -1,6 +1,6 @@
 ### Demo
 
-I'll have it live for a little while (here)[https://c123ian--irish-chatbot-serve-fasthtml.modal.run/]
+I'll have it live for a little while [here](https://c123ian--irish-chatbot-serve-fasthtml.modal.run/), please be aware may take 4 minutes to cold boot from first message. 
 
 
 ### Base Model
