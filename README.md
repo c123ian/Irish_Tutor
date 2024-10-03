@@ -1,3 +1,8 @@
+### Demo
+
+I'll have it live for a little while (here)[https://c123ian--irish-chatbot-serve-fasthtml.modal.run/]
+
+
 ### Base Model
 
 Using **UCCIX-Llama2-13B**, an Irish-English bilingual model based on **Llama 2-13B**. Capable of understanding both languages and outperforms larger models on Irish language tasks.
