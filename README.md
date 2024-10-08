@@ -41,22 +41,25 @@ modal run download_llama.py
 ### Chatbot Comparison
 
 #### 1. **Irish Tutor LLM v1** (`irish_tutor_llm_v1_ws.py`)
-- **Simplified code**:
-  - Uses **websockets** (`@fasthtml_app.ws`) for real-time chat and non-blocking requests.
-  - The **GUI is modularized**: chat components (e.g., `chat_form`, `chat_message`) are imported from external modules, keeping the main code clean and easier to maintain.
-- **OpenAI `/v1/completions` API**: Standard OpenAI-compatible API for LLM responses.
-- **Single prompt-response**: Handles individual exchanges without retaining conversation history.
-- **Efficient for basic use**: No loading indicators or security features—straightforward for simple, fast setups.
+
+| **Route**               | **Method** | **Description**                                                                 | **Relevant Functions**                            | **Action When User Types "hello world"**                                 |
+|-------------------------|------------|---------------------------------------------------------------------------------|---------------------------------------------------|-------------------------------------------------------------------------|
+| `/`                     | `GET`      | Serves the FastHTML chat interface. Displays a chat UI where users can input messages and see responses. | `serve_fasthtml()`, `get()`                       | The user sees the chat interface with an input field for their message. |
+| `/v1/completions`        | `GET`      | Asks the LLM to generate a completion for a given prompt (used for processing user input). | `get_completions(prompt: str, max_tokens: int)`   | The prompt **"Human: hello world\nAssistant:"** is sent to the LLM for processing. A response is generated and returned. **All previous chat messages are concatenated into a single conversation string and included in this prompt**. |
+| `/ws`                   | `WebSocket` | Handles WebSocket connections for real-time chat updates. The user sends a message, and the assistant responds through live updates. | `ws(msg: str, send)`, `chat_form()`, `chat_message()`   | The user message **"hello world"** is sent to the LLM. The assistant's response is streamed back in real-time, updating the chat. |
+
+
 
 #### 2. **Irish LLM v2** (`irish_llm_v2.py`)
-- **More complex structure**:
-  - Uses **`aiohttp`** for asynchronous HTTP requests (`/chat` routes), which handles multiple concurrent requests but adds complexity.
-  - **In-code UI elements**: Chat form and message bubbles are embedded directly into the code (e.g., `chat_window`, `chat_message`), integrating the frontend with the main logic.
-  - **Bearer token authentication** (`HTTPBearer`) ensures secure access to the API.
-  - **Conversation history**: Appends previous messages into the prompt (`full_conversation`), enabling context-aware dialogue over multiple exchanges.
-  - **Temporary loading indicator**: Implements a loading message (with HTMX and three dots) and a warning for CPU load times (`setTimeout` for showing the message).
-- **Dynamic model loading**: Dynamically searches for the model configuration files (`find_model_path`), adding flexibility in deployment.
-- **Improved response control**: Prevents overly long responses by managing token generation, ensuring clean completion and avoiding rambling (`completion_generator`).
+
+| **Route**               | **Method** | **Description**                                                                 | **Relevant Functions**                            | **Action When User Types "hello world"**                                 |
+|-------------------------|------------|---------------------------------------------------------------------------------|---------------------------------------------------|-------------------------------------------------------------------------|
+| `/`                     | `GET`      | Serves the FastHTML chat interface. Displays a chat UI where users can input messages and see responses. | `serve_fasthtml()`, `get()`                       | The user sees the chat interface with an input field for their message. |
+| `/chat`                 | `POST`     | Handles chat form submission via HTMX. Processes user input and updates the chat window. | `post(msg: str)`, `generate_response(msg, idx)`   | The user message **"hello world"** is added to the chat. The assistant's response starts loading (via `generate_response`). |
+| `/chat/{msg_idx}`        | `GET`      | Polls for updates to a specific message. Used to update the assistant's message preview. | `get(msg_idx: int)`, `message_preview(msg_idx)`   | The assistant's response for **"hello world"** is updated in the chat once available. |
+| `/v1/completions`        | `GET`      | Asks the LLM to generate a completion for a given prompt (used for processing user input). | `get_completions(prompt: str, max_tokens: int)`   | The prompt **"Human: hello world\nAssistant:"** is sent to the LLM for processing. A response is generated and returned. **All previous chat messages are concatenated into a single conversation string and included in this prompt**. |
+| `/chat/{msg_idx}`        | `GET`      | HTMX polls this route every second for assistant message updates.               | `message_preview(msg_idx)`, `generate_response`   | If the assistant response is not ready, a loading message is shown. Once ready, the assistant's response replaces the loading message. |
+
 
 ---
 
