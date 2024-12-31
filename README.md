@@ -1,3 +1,8 @@
+### Data collection and Training
+
+For more information on preparing data for finetuning please see [c123ian/Irish_Eng_Training](https://github.com/c123ian/Irish_Eng_Training)
+
+
 ### Demo
 
 I'll have it live for a little while [here](https://c123ian--irish-chatbot-serve-fasthtml.modal.run/), please be aware may take 4 minutes to cold boot from first message. 
